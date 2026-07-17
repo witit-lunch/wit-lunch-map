@@ -3,22 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css\style.css">
+    <!-- ファビコン・アプリアイコンの設定 -->
+    <link rel="icon" href="images/04_round_icon1.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/04_round_icon1.png">
+    
+    <link rel="stylesheet" href="css/style.css">
     <title>高田馬場WIT周辺 みんなで育てるランチマップ</title>
 </head>
 
 <body>
     <header>
-        <h1>高田馬場WIT周辺 みんなで育てるランチマップ</h1>
+        <div class="header-logo-area">
+            <img src="images/06_simple_icon1.png" alt="WITロゴ" class="header-icon">
+            <h1>高田馬場WIT周辺 みんなで育てるランチマップ</h1>
+        </div>
         <nav>
             <a href="#search-section">ランチを探す</a>
             <a href="#register-section">お店を登録する</a>
         </nav>
     </header>
 
-    <!-- ヒーローエリア (9枚の固定画像) -->
-    <!-- ヒーローエリア (9枚の固定画像) -->
-    <!-- スライドショーエリア (9枚の画像が入れ替わる想定) -->
+    <!-- ヒーローエリア (スライドショー画像) -->
     <section class="hero-visual">
         <div id="slideshow">
             <img src="images/9-1.png" class="slide active" alt="ランチ写真1">
@@ -46,9 +51,7 @@
             <label><input type="checkbox" name="category" value="curry"> 🍛 カレー</label>
             <label><input type="checkbox" name="category" value="teishoku"> 🍚 定食</label>
             <label><input type="checkbox" name="category" value="healthy"> 🥗 ヘルシー</label>
-
             <label><input type="checkbox" name="category" value="soba"> うどん・そば</label>
-
             <label><input type="checkbox" name="category" value="western"> 洋食</label>
             <label><input type="checkbox" name="category" value="ethnic"> エスニック</label>
             <label><input type="checkbox" name="category" value="takeout"> テイクアウト</label>
@@ -56,7 +59,7 @@
         <button id="search-submit" class="submit-btn">この条件で探す</button>
     </section>
 
-    <!-- その他セクション（将来構想を含む） -->
+    <!-- その他セクション -->
     <section id="recent-reviews">
         <h2>🟢 新着レビュー（表示イメージ）</h2>
         <div class="review-item"><span>12分前</span> 佐藤さん: キッチン谷沢を追加しました！</div>
@@ -95,8 +98,7 @@
                 <input type="url" name="tabelog_url" id="tabelog" placeholder="必須 または GoogleMap URL">
             </div>
 
-            <div class="form-group"><label>写真</label><input type="file" name="store_photo" accept="image/*" required>
-            </div>
+            <div class="form-group"><label>写真</label><input type="file" name="store_photo" accept="image/*" required></div>
             <div class="form-group"><label>一言コメント</label><textarea name="comment" rows="3" required></textarea></div>
 
             <div class="form-group">
@@ -144,6 +146,21 @@
         <p><small>※すべての提案をAIと対話し、最終採用判断は自分で行いました。</small></p>
     </section>
 
+    <!-- フッター -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/03_square_logo1.png" alt="WIT Lunch Map Logo">
+            </div>
+            <div class="footer-info">
+                <h3>高田馬場WIT周辺 みんなで育てるランチマップ</h3>
+                <p>今日のランチ情報が、次の学生の役に立つ。</p>
+                <p class="copyright">&copy; 2026 WIT Lunch Map Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQueryとスクリプトの読み込み -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
 </body>

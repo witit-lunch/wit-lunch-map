@@ -1,44 +1,34 @@
-$(document).ready(function () {
-    // 1. 簡易スライドショー
-    let currentSlide = 0;
-    const slides = $('.slide');
-    slides.eq(0).addClass('active');
-    setInterval(function () {
-        slides.eq(currentSlide).removeClass('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides.eq(currentSlide).addClass('active');
-    }, 5000);
+$(function() {
+    // ==========================================
+    // 1. スライドショー機能（3秒ごとに切り替え）
+    // ==========================================
+    let slides = $('.slide');
+    let currentIndex = 0;
 
-    // 2. 検索フィルタリング（ボタン）
-    $('.filter-btn').on('click', function () {
-        const tag = $(this).data('tag');
-        alert(tag + " カテゴリーの検索機能はDB実装時に有効化されます。");
+    function showNextSlide() {
+        // 現在のスライドから active クラスを取り除く
+        slides.eq(currentIndex).removeClass('active');
+        
+        // 次のスライドのインデックスを計算
+        currentIndex = (currentIndex + 1) % slides.length;
+        
+        // 次のスライドに active クラスを付与して表示する
+        slides.eq(currentIndex).addClass('active');
+    }
+
+    // 3秒ごとにスライドを切り替える
+    setInterval(showNextSlide, 3000);
+
+    // ==========================================
+    // 2. 登録フォームのバリデーション
+    // ==========================================
+    $('#store-form').on('submit', function(e) {
+        let gmap = $('#gmap').val().trim();
+        let tabelog = $('#tabelog').val().trim();
+
+        if (!gmap && !tabelog) {
+            e.preventDefault();
+            alert('「GoogleMap URL」または「食べログ URL」のいずれか一方は必ず入力してください。');
+        }
     });
-
-    // 3. 検索ボタン押下時の処理
-    $('#search-submit').on('click', function () {
-        alert('この機能はDBが実装されてから有効になります。');
-    });
-
-    // 4. 登録機能のバリデーション（← ここを独立させました）
-    // $('#store-form').on('submit', function (e) {
-        // e.preventDefault();
-
-        // const gmap = $('input[name="gmap_url"]').val();
-        // const tabelog = $('input[name="tabelog_url"]').val();
-
-        // if (!gmap && !tabelog) {
-            // alert('Google Mapと食べログのURLはどちらかは入力してください。\nこの機能はDBが実装されてから有効になります。');
-        // } else {
-            // alert('入力内容が確認されました。\nこの機能はDBが実装されてから有効になります。');
-        // }
-    // });
-    // 4. 登録機能（デモのため、入力チェックをスキップしてアラートを表示）
-    $('#store-form').on('submit', function (e) {
-        e.preventDefault(); // 画面遷移を停止
-
-        // 常にこちらのメッセージを表示
-        alert('Google Mapと食べログのURLはどちらかは入力してください。\nこの機能はDBが実装されてから有効になります。');
-    });
-
 });
